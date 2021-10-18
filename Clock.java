@@ -85,9 +85,13 @@ public class Clock {
         }
     }
     public void subtractClock(Clock clock){
-        this.seconds -= clock.getSeconds();
-        this.minutes -= clock.getMinutes();
-        this.hours -= clock.getHours();
+        this.seconds +=this.minutes*60 + this.hours*3600;
+        int clockTime = clock.getSeconds() + clock.getMinutes()*60 + clock.getHours()*3600;
+        this.seconds -=clockTime;
+        this.hours = this.seconds / 3600;
+        this.minutes = this.seconds / 60 % 60;
+        this.seconds = this.seconds % 60;
+
     }
     }
 
